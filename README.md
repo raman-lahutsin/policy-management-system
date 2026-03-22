@@ -19,6 +19,36 @@ Here's a simple walkthrough of a policy's life, and how the system helps at each
 5. **Claims** - If something bad happens and the customer asks for money, the system helps process that request against the right policy.
 6. **Cancellations** - If someone wants to stop their insurance, the system handles ending the contract properly.
 
+## Installing Docker
+
+### Windows
+
+1. Download **Docker Desktop** from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/).
+2. Run the installer and follow the prompts. Ensure **WSL 2** backend is selected (recommended).
+3. Restart your computer when prompted.
+4. Open Docker Desktop and wait for it to start (the whale icon in the system tray should be steady).
+5. Verify the installation by opening a terminal and running:
+
+```bash
+docker --version
+docker compose version
+```
+
+> **Note:** WSL 2 must be enabled. If it isn't, follow the [Microsoft WSL install guide](https://learn.microsoft.com/en-us/windows/wsl/install) by running `wsl --install` in PowerShell as Administrator, then restart.
+
+### Mac
+
+1. Download **Docker Desktop** from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) (choose the chip that matches your Mac — Apple Silicon or Intel).
+2. Open the `.dmg` file and drag Docker to the Applications folder.
+3. Launch Docker from Applications and grant the required permissions.
+4. Wait for Docker Desktop to finish starting (the whale icon in the menu bar should be steady).
+5. Verify the installation by opening a terminal and running:
+
+```bash
+docker --version
+docker compose version
+```
+
 ## Running with Docker
 
 ```bash

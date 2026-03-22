@@ -14,7 +14,7 @@ gem "jwt", "~> 2.8"
 
 # API
 gem "rack-cors", "~> 2.0"
-gem "pagy", "~> 9.0"
+gem "pagy", "~> 43.4"
 
 # Windows timezone data
 gem "tzinfo-data", platforms: %i[windows jruby]

@@ -1,127 +1,41 @@
 # Policy Management System
 
-An insurance policy management application — helps insurance companies organize and handle all of their policies in one place.
+## Insurance Policy
 
-Monorepo with two directories:
-- `backend/` — Ruby on Rails API
-- `frontend/` — React SPA
+Think of an insurance policy like a contract - a written agreement between you and an insurance company. You pay them money regularly (called a "premium"), and in return, they promise to help you financially if something bad happens - like a car accident, a house fire, or a health issue.
 
-## Tech Stack
+## Policy Management System (PMS)
 
-**Backend:** Ruby 3.4 / Rails 8.1 (API-only), PostgreSQL, JWT Authentication, RSpec
+Imagine an insurance company has thousands, even millions, of these contracts with different people. Each one has different details: different names, different coverage amounts, different start and end dates, different prices. Managing all of that on paper or in simple spreadsheets would be a nightmare.
 
-**Frontend:** React 19 + Vite, Material UI (MUI), React Router v6, Axios, Vitest
+A Policy Management System is basically the **software** (a computer program) that helps the insurance company organize and handle all of those policies in one place. Think of it like a super-smart digital filing cabinet.
 
-## Backend Setup
+Here's a simple walkthrough of a policy's life, and how the system helps at each stage:
+
+1. **Creating a new policy** - When someone buys insurance, the system records all the details: who they are, what's covered, how much they pay, and when coverage starts.
+2. **Collecting payments** - It tracks whether customers have paid their premiums on time.
+3. **Making changes** - If a customer wants to add something (say, a new driver to their car insurance), the system updates the policy.
+4. **Renewals** - When a policy is about to expire, the system can flag it or even automatically renew it.
+5. **Claims** - If something bad happens and the customer asks for money, the system helps process that request against the right policy.
+6. **Cancellations** - If someone wants to stop their insurance, the system handles ending the contract properly.
+
+## Running with Docker
 
 ```bash
-cd backend
-
-# Install dependencies
-bundle install
-
-# Set up environment variables
+# Copy and configure environment variables
 cp .env.example .env
-# Edit .env with your database credentials
+# Set RAILS_MASTER_KEY to the value from backend/config/master.key
 
-# Create and migrate database
-rails db:create db:migrate db:seed
+# Build and start all services
+docker compose up --build
 
-# Run the server
-rails s
+# Seed the database (first run only)
+docker compose exec backend ./bin/rails db:seed
 ```
 
-## API Endpoints
+The app will be available at `http://localhost:3000`. Login with `admin@example.com` / `password123`.
 
-All endpoints are under `/api/v1/` and require a JWT token in the `Authorization: Bearer <token>` header (except auth endpoints).
-
-### Authentication
-- `POST /api/v1/auth/register` — Create user account
-- `POST /api/v1/auth/login` — Get JWT token
-- `GET /api/v1/auth/me` — Current user profile
-
-### Accounts
-- `GET /api/v1/accounts` — List accounts
-- `POST /api/v1/accounts` — Create account
-- `GET /api/v1/accounts/:id` — Show account (includes associated policies)
-- `PATCH /api/v1/accounts/:id` — Update account
-- `DELETE /api/v1/accounts/:id` — Delete account
-- `GET /api/v1/accounts/:id/policies` — Account's policies
-
-Address fields are nested under an `address` object in both requests and responses:
-
-```json
-{
-  "account": {
-    "first_name": "Jane",
-    "last_name": "Doe",
-    "email": "jane@example.com",
-    "address": {
-      "address_line1": "123 Main St",
-      "address_line2": null,
-      "city": "Springfield",
-      "state": "IL",
-      "zip_code": "62701"
-    }
-  }
-}
-```
-
-### Policies
-- `GET /api/v1/policies` — List policies
-- `POST /api/v1/policies` — Create policy
-- `GET /api/v1/policies/:id` — Show policy
-- `PATCH /api/v1/policies/:id` — Update policy
-- `DELETE /api/v1/policies/:id` — Delete policy
-
-Policy `insurance_type` values: `general_liability`, `professional_liability`, `commercial_property`, `business_owners`
-
-`premium` and `coverage` are integers (whole dollar amounts).
-
-### Endorsements
-- `GET /api/v1/policies/:policy_id/endorsements` — List endorsements for policy
-- `POST /api/v1/policies/:policy_id/endorsements` — Create endorsement
-- `GET /api/v1/endorsements/:id` — Show endorsement
-- `PATCH /api/v1/endorsements/:id` — Update endorsement
-
-Endorsement `endorsement_type` values: `policy_change`, `cancellation`, `reinstatement`
-
-`premium` is an integer (whole dollar amount, can be negative for cancellations).
-
-## Frontend
-
-The frontend is a React SPA in the `frontend/` directory, built with:
-
-- React 19 + Vite
-- Material UI (MUI)
-- React Router v6
-- Axios (JWT auth via interceptors)
-- Vention brand colors (`#FF6A47` primary orange)
-
-### Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev    # starts dev server on http://localhost:5173
-```
-
-The Vite dev server proxies `/api` requests to `http://localhost:3000` (Rails backend), so start both servers during development.
-
-### Frontend Tests
-
-```bash
-cd frontend
-npm test           # single run (Vitest)
-npm run test:watch # watch mode
-```
-
-## Backend Tests
-
-```bash
-cd backend
-bundle exec rspec
-```
+To stop: `docker compose down` (add `-v` to also remove the database volume).
 
 ## License
 

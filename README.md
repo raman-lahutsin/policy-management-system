@@ -35,6 +35,8 @@ docker compose exec backend ./bin/rails db:seed
 
 The app will be available at `http://localhost:3000`. Login with `admin@example.com` / `password123`.
 
+The backend API is also exposed directly at `http://localhost:3001` for use with external tools like Postman or curl.
+
 To stop: `docker compose down` (add `-v` to also remove the database volume).
 
 ## License

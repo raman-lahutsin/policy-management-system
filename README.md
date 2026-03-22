@@ -83,7 +83,35 @@ Endorsement `endorsement_type` values: `policy_change`, `cancellation`, `reinsta
 
 `premium` is an integer (whole dollar amount, can be negative for cancellations).
 
-## Testing
+## Frontend
+
+The frontend is a React SPA in the `frontend/` directory, built with:
+
+- React 19 + Vite
+- Material UI (MUI)
+- React Router v6
+- Axios (JWT auth via interceptors)
+- Vention brand colors (`#FF6A47` primary orange)
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev    # starts dev server on http://localhost:5173
+```
+
+The Vite dev server proxies `/api` requests to `http://localhost:3000` (Rails backend), so start both servers during development.
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm test           # single run (Vitest)
+npm run test:watch # watch mode
+```
+
+## Backend Testing
 
 ```bash
 bundle exec rspec

@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(wsl bash:*)"
+      "Bash(wsl bash:*)",
+      "Bash(npx vite:*)",
+      "Bash(find d:/Projects/Repositories/policy-management-system/frontend -type f -name *.test.* -o -name *.spec.* -o -name vitest.config.* -o -name jest.config.* -o -name setupTests.*)",
+      "Bash(npm install:*)",
+      "Bash(npx vitest:*)",
+      "WebFetch(domain:brand.ventionteams.com)",
+      "Bash(npm test:*)"
     ]
   }
 }

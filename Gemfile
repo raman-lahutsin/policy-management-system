@@ -13,7 +13,7 @@ gem "bcrypt", "~> 3.1"
 gem "jwt", "~> 2.8"
 
 # API
-gem "rack-cors", "~> 2.0"
+gem "rack-cors", "~> 3.0"
 gem "pagy", "~> 9.0"
 
 # Windows timezone data

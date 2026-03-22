@@ -39,6 +39,29 @@ The backend API is also exposed directly at `http://localhost:3001` for use with
 
 To stop: `docker compose down` (add `-v` to also remove the database volume).
 
+## Deploying to Render / Railway
+
+The root `Dockerfile` builds both frontend and backend into a single container.
+
+**Required environment variables:**
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string (provided by the platform's managed Postgres) |
+| `RAILS_MASTER_KEY` | Value from `backend/config/master.key` |
+
+The platform automatically sets `PORT` — no action needed.
+
+**Manual build & run:**
+
+```bash
+docker build -t policy-app .
+docker run -p 3000:80 \
+  -e RAILS_MASTER_KEY=<key> \
+  -e DATABASE_URL=postgres://user:pass@host:5432/dbname \
+  policy-app
+```
+
 ## License
 
 See [LICENSE](LICENSE) for details.

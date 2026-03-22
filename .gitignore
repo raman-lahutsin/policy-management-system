@@ -4,35 +4,27 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
-# Ignore bundler config.
-/.bundle
+# Backend (Rails)
+/backend/.bundle
+/backend/.env*
+/backend/log/*
+/backend/tmp/*
+!/backend/log/.keep
+!/backend/tmp/.keep
+/backend/tmp/pids/*
+!/backend/tmp/pids/
+!/backend/tmp/pids/.keep
+/backend/storage/*
+!/backend/storage/.keep
+/backend/tmp/storage/*
+!/backend/tmp/storage/
+!/backend/tmp/storage/.keep
+/backend/config/*.key
+/backend/coverage/
 
-# Ignore all environment files.
-/.env*
-
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
-
-# Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
-
-# Ignore key files for decrypting credentials and more.
-/config/*.key
-
-# Coverage
-/coverage/
+# Frontend
+/frontend/node_modules/
+/frontend/dist/
 
 # IDE
 .idea/
@@ -41,10 +33,6 @@
 
 # Claude
 .claude/
-
-# Frontend
-/frontend/node_modules/
-/frontend/dist/
 
 # OS
 Thumbs.db

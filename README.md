@@ -1,17 +1,22 @@
 # Policy Management System
 
-A Ruby on Rails API for insurance policy management — helps insurance companies organize and handle all of their policies in one place.
+An insurance policy management application — helps insurance companies organize and handle all of their policies in one place.
+
+Monorepo with two directories:
+- `backend/` — Ruby on Rails API
+- `frontend/` — React SPA
 
 ## Tech Stack
 
-- Ruby 3.4 / Rails 8.1 (API-only)
-- PostgreSQL
-- JWT Authentication
-- RSpec for testing
+**Backend:** Ruby 3.4 / Rails 8.1 (API-only), PostgreSQL, JWT Authentication, RSpec
 
-## Setup
+**Frontend:** React 19 + Vite, Material UI (MUI), React Router v6, Axios, Vitest
+
+## Backend Setup
 
 ```bash
+cd backend
+
 # Install dependencies
 bundle install
 
@@ -111,9 +116,10 @@ npm test           # single run (Vitest)
 npm run test:watch # watch mode
 ```
 
-## Backend Testing
+## Backend Tests
 
 ```bash
+cd backend
 bundle exec rspec
 ```
 

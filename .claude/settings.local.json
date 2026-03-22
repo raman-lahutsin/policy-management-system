@@ -7,7 +7,10 @@
       "Bash(npm install:*)",
       "Bash(npx vitest:*)",
       "WebFetch(domain:brand.ventionteams.com)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(ls -d d:/Projects/Repositories/policy-management-system/.kamal/*/)",
+      "Bash(ls d:/Projects/Repositories/policy-management-system/.kamal/secrets*)",
+      "Bash(bundle exec:*)"
     ]
   }
 }

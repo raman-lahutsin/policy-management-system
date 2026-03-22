@@ -10,7 +10,7 @@ gem "bootsnap", require: false
 
 # Authentication
 gem "bcrypt", "~> 3.1"
-gem "jwt", "~> 2.8"
+gem "jwt", "~> 3.1"
 
 # API
 gem "rack-cors", "~> 2.0"

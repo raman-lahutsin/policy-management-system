@@ -137,7 +137,7 @@ GEM
     json-schema (6.2.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
-    jwt (2.10.2)
+    jwt (3.1.2)
       base64
     kamal (2.11.0)
       activesupport (>= 7.0)
@@ -383,7 +383,7 @@ DEPENDENCIES
   dotenv-rails (~> 3.0)
   factory_bot_rails (~> 6.0)
   faker (~> 3.0)
-  jwt (~> 2.8)
+  jwt (~> 3.1)
   kamal
   pagy (~> 9.0)
   pg (~> 1.1)

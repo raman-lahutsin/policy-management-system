@@ -69,6 +69,28 @@ The backend API is also exposed directly at `http://localhost:3001` for use with
 
 To stop: `docker compose down` (add `-v` to also remove the database volume).
 
+## Accessing the Database with PgAdmin
+
+PgAdmin is included in the Docker setup and available at `http://localhost:5050`.
+
+1. Open `http://localhost:5050` in your browser.
+2. Log in with:
+   - **Email:** `admin@admin.com`
+   - **Password:** `admin`
+3. Right-click **Servers** → **Register** → **Server**.
+4. **General tab:** Enter any name (e.g., "Policy Management").
+5. **Connection tab:**
+
+| Field | Value |
+|---|---|
+| Host | `db` |
+| Port | `5432` |
+| Maintenance database | `policy_management_production` |
+| Username | `postgres` |
+| Password | `postgres` |
+
+6. Click **Save**.
+
 ## Deploying to Render / Railway
 
 The root `Dockerfile` builds both frontend and backend into a single container.

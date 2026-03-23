@@ -55,8 +55,9 @@ export default function EndorsementFormPage() {
     setError(null);
     setSubmitting(true);
     try {
+      const { description, ...rest } = form;
       const payload = {
-        ...form,
+        ...rest,
         premium: parseInt(form.premium, 10),
       };
       if (isEdit) {
@@ -111,7 +112,7 @@ export default function EndorsementFormPage() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
-                label="Premium ($)"
+                label="Coverage ($)"
                 name="premium"
                 type="number"
                 fullWidth

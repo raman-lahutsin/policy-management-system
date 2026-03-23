@@ -48,7 +48,7 @@ export default function DashboardPage() {
           <Button
             variant="outlined"
             startIcon={<AddIcon />}
-            onClick={() => navigate('/policies/new')}
+            onClick={() => navigate('/accounts/new')}
           >
             New Policy
           </Button>

@@ -34,7 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_22_121425) do
 
   create_table "endorsements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "description", null: false
+    t.text "description"
     t.date "effective_date", null: false
     t.string "endorsement_type", null: false
     t.uuid "policy_id", null: false

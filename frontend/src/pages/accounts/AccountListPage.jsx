@@ -9,7 +9,7 @@ const columns = [
   {
     key: 'name',
     label: 'Name',
-    render: (row) => `${row.first_name} ${row.last_name}`,
+    render: (row) => `${row.first_name}`,
   },
   { key: 'email', label: 'Email' },
   { key: 'phone', label: 'Phone', render: (row) => row.phone || '-' },

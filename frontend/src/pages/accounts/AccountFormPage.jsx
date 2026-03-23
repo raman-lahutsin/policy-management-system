@@ -42,7 +42,7 @@ export default function AccountFormPage() {
             first_name: a.first_name || '',
             last_name: a.last_name || '',
             email: a.email || '',
-            phone: a.phone || '',
+            phone: a.phone_number || '',
             date_of_birth: a.date_of_birth || '',
             address_line1: a.address?.address_line1 || '',
             address_line2: a.address?.address_line2 || '',

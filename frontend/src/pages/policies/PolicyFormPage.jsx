@@ -78,11 +78,12 @@ export default function PolicyFormPage() {
         coverage: parseInt(form.coverage, 10),
       };
       if (isEdit) {
-        await updatePolicy(id, payload);
+        const { status, ...updatePayload } = payload;
+        await updatePolicy(id, updatePayload);
         navigate(`/policies/${id}`);
       } else {
-        const res = await createPolicy(payload);
-        navigate(`/policies/${res.data.id}`);
+        await createPolicy(payload);
+        navigate('/policies');
       }
     } catch (err) {
       setError(extractErrors(err));

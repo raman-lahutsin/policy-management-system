@@ -148,7 +148,7 @@ export default function AccountDetailPage() {
       <ConfirmDialog
         open={deleteOpen}
         title="Delete Account"
-        message={`Are you sure you want to delete the account for ${account.first_name} ${account.last_name}? This cannot be undone.`}
+        message={`Are you sure you want to delete the policy for ${account.first_name} ${account.last_name}? This cannot be undone.`}
         onConfirm={handleDelete}
         onCancel={() => setDeleteOpen(false)}
       />

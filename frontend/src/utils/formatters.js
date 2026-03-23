@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 
 export function formatDate(dateString) {
   if (!dateString) return '';
-  return dayjs(dateString).format('MMM D, YYYY');
+  return dayjs(dateString).subtract(1, 'day').format('MMM D, YYYY');
 }
 
 export function formatCurrency(amount) {
   if (amount == null) return '';
-  return `$${Number(amount).toLocaleString()}`;
+  return `$${(Number(amount) / 100).toLocaleString()}`;
 }
 
 export function formatInsuranceType(type) {

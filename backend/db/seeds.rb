@@ -25,7 +25,6 @@ ENDORSEMENT_TYPES = %w[policy_change cancellation reinstatement].freeze
 US_STATES = %w[AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY].freeze
 
 ActiveRecord::Base.transaction do
-  # --- Accounts ---
   accounts = 50.times.map do
     Account.create!(
       first_name: Faker::Name.first_name,
@@ -43,15 +42,10 @@ ActiveRecord::Base.transaction do
 
   puts "Created #{accounts.size} accounts"
 
-  # Split accounts into groups:
-  # - 10 with 0 policies
-  # - 15 with exactly 1 policy
-  # - 25 with 2-4 policies
   no_policy_accounts = accounts[0, 10]
   single_policy_accounts = accounts[10, 15]
   multi_policy_accounts = accounts[25, 25]
 
-  # Helper to generate date ranges based on desired status
   generate_dates = lambda do |status|
     case status
     when "active"
@@ -70,10 +64,8 @@ ActiveRecord::Base.transaction do
     [effective, expiration]
   end
 
-  # Weighted status selection: more active policies
   weighted_statuses = (%w[active] * 5 + %w[draft] * 2 + %w[expired] * 2 + %w[cancelled] * 1).freeze
 
-  # Helper to create a policy for an account
   create_policy = lambda do |account|
     status = weighted_statuses.sample
     effective_date, expiration_date = generate_dates.call(status)
@@ -93,23 +85,16 @@ ActiveRecord::Base.transaction do
   # --- Policies ---
   policies = []
 
-  # 1 policy each for single-policy accounts (15 policies)
   single_policy_accounts.each do |account|
     policies << create_policy.call(account)
   end
 
-  # 2-4 policies each for multi-policy accounts (50-100 policies)
   multi_policy_accounts.each do |account|
     rand(2..4).times { policies << create_policy.call(account) }
   end
 
   puts "Created #{policies.size} policies"
 
-  # --- Endorsements ---
-  # Split policies into groups:
-  # - ~20% with 0 endorsements
-  # - ~30% with exactly 1 endorsement
-  # - ~50% with 2-4 endorsements
   shuffled_policies = policies.shuffle
   no_endorsement_count = (policies.size * 0.2).round
   single_endorsement_count = (policies.size * 0.3).round

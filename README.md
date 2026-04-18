@@ -63,17 +63,17 @@ docker compose up --build
 docker compose exec backend ./bin/rails db:seed
 ```
 
-The app will be available at `http://localhost:3000`. Login with `admin@example.com` / `password123`.
+The app will be available at `http://localhost:80`. Login with `admin@example.com` / `password123`.
 
-The backend API is also exposed directly at `http://localhost:3001` for use with external tools like Postman or curl.
+The backend API is also exposed directly at `http://localhost:8000` for use with external tools like Postman or curl.
 
 To stop: `docker compose down` (add `-v` to also remove the database volume).
 
 ## Accessing the Database with PgAdmin
 
-PgAdmin is included in the Docker setup and available at `http://localhost:5050`.
+PgAdmin is included in the Docker setup and available at `http://localhost:15050`.
 
-1. Open `http://localhost:5050` in your browser.
+1. Open `http://localhost:15050` in your browser.
 2. Log in with:
    - **Email:** `admin@admin.com`
    - **Password:** `admin`
@@ -108,7 +108,7 @@ The platform automatically sets `PORT` — no action needed.
 
 ```bash
 docker build -t policy-app .
-docker run -p 3000:80 \
+docker run -p 80:80 \
   -e RAILS_MASTER_KEY=<key> \
   -e DATABASE_URL=postgres://user:pass@host:5432/dbname \
   policy-app

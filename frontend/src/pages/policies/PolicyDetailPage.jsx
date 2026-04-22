@@ -109,11 +109,11 @@ export default function PolicyDetailPage() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Typography variant="subtitle2" color="text.secondary">Effective Date</Typography>
-              <Typography>{formatDate(policy.effective_date)}</Typography>
+              <Typography>{formatDate(policy.expiration_date)}</Typography>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Typography variant="subtitle2" color="text.secondary">Expiration Date</Typography>
-              <Typography>{formatDate(policy.expiration_date)}</Typography>
+              <Typography>{formatDate(policy.effective_date)}</Typography>
             </Grid>
             {policy.description && (
               <Grid size={12}>
@@ -161,7 +161,7 @@ export default function PolicyDetailPage() {
                 >
                   <TableCell><StatusChip status={end.endorsement_type} /></TableCell>
                   <TableCell>{formatDate(end.effective_date)}</TableCell>
-                  <TableCell>{formatCurrency(end.premium)}</TableCell>
+                  <TableCell>{formatCurrency(Math.abs(end.premium))}</TableCell>
                   <TableCell sx={{ maxWidth: 250, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {end.description || '-'}
                   </TableCell>

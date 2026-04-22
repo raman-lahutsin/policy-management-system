@@ -11,6 +11,6 @@ class Endorsement < ApplicationRecord
 
   validates :endorsement_type, presence: true
   validates :effective_date, presence: true
-  validates :premium, presence: true, numericality: { only_integer: true }
+  validates :premium, presence: true, numericality: true
   validates :description, length: { maximum: 500 }
 end

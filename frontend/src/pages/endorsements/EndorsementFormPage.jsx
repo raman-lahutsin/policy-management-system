@@ -35,7 +35,7 @@ export default function EndorsementFormPage() {
           const e = res.data;
           setParentPolicyId(e.policy_id || e.policy?.id || '');
           setForm({
-            endorsement_type: e.endorsement_type || '',
+            endorsement_type: 'policy_change',
             effective_date: e.effective_date || '',
             premium: e.premium ?? '',
             description: e.description || '',
@@ -101,7 +101,7 @@ export default function EndorsementFormPage() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <DatePicker
-                label="Effective Date"
+                label="Issue Date"
                 value={form.effective_date ? dayjs(form.effective_date) : null}
                 onChange={(val) => setForm((prev) => ({
                   ...prev,

@@ -88,7 +88,7 @@ export default function AccountDetailPage() {
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Typography variant="subtitle2" color="text.secondary">Date of Birth</Typography>
-              <Typography>{formatDate(account.date_of_birth) || '-'}</Typography>
+              <Typography>{account.date_of_birth || '-'}</Typography>
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <Typography variant="subtitle2" color="text.secondary">Address</Typography>

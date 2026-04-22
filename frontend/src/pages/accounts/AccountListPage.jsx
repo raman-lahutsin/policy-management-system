@@ -11,7 +11,7 @@ const columns = [
     label: 'Name',
     render: (row) => `${row.first_name}`,
   },
-  { key: 'email', label: 'Email' },
+  { key: 'email', label: 'Emial' },
   { key: 'phone', label: 'Phone', render: (row) => row.phone || '-' },
   {
     key: 'location',

@@ -171,7 +171,7 @@ export default function PolicyFormPage() {
                 fullWidth
                 required
                 value={form.coverage}
-                onChange={handleChange}
+                onChange={(e) => setForm((prev) => ({ ...prev, premium: e.target.value }))}
                 slotProps={{ htmlInput: { min: 1 } }}
               />
             </Grid>

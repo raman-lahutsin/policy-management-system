@@ -6,7 +6,7 @@ module Api
       before_action :set_policy, only: [:show, :update, :destroy]
 
       def index
-        policies = Policy.includes(:account).order(created_at: :desc)
+        policies = Policy.includes(:account).order(:id)
         pagy, policies = pagy(policies)
         render json: {
           data: sorted(policies.as_json(include: {
@@ -58,7 +58,7 @@ module Api
 
       def policy_params
         params.require(:policy).permit(
-          :account_id, :insurance_type, :status, :description,
+          :account_id, :insurance_type, :status,
           :premium, :coverage,
           :effective_date, :expiration_date
         )

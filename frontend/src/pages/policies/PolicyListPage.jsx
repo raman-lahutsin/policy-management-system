@@ -11,7 +11,7 @@ export default function PolicyListPage() {
   const navigate = useNavigate();
 
   const columns = [
-    { key: 'policy_number', label: 'Policy Number' },
+    { key: 'policy_number', label: 'Policy Number', render: (row) => row.number },
     {
       key: 'insurance_type',
       label: 'Type',

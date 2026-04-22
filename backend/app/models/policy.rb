@@ -17,7 +17,7 @@ class Policy < ApplicationRecord
   validates :premium, presence: true,
             numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :coverage, presence: true,
-            numericality: { only_integer: true, greater_than: 0 }
+            numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :effective_date, :expiration_date, presence: true
   validate :expiration_after_effective
 
@@ -37,6 +37,7 @@ class Policy < ApplicationRecord
 
   def expiration_after_effective
     return unless effective_date && expiration_date
+    return if status == "draft"
 
     if expiration_date < effective_date
       errors.add(:expiration_date, "must be after effective date")

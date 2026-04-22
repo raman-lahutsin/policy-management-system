@@ -45,7 +45,7 @@ export default function AccountFormPage() {
             phone: a.phone_number || '',
             date_of_birth: a.date_of_birth || '',
             address_line1: a.address?.address_line1 || '',
-            address_line2: a.address?.address_line2 || '',
+            address_line2: '',
             city: a.address?.city || '',
             state: a.address?.state || '',
             zip_code: a.address?.zip_code || '',

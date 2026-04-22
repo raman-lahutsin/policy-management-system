@@ -10,7 +10,7 @@ module Api
       def index
         endorsements = @policy.endorsements.order(created_at: :desc)
         pagy, endorsements = pagy(endorsements)
-        render json: { data: sorted(endorsements.as_json), meta: pagy_metadata(pagy) }
+        render json: { data: sorted(endorsements.as_json(except: [:description])), meta: pagy_metadata(pagy) }
       end
 
       # GET /api/v1/endorsements/:id
@@ -25,6 +25,7 @@ module Api
       # POST /api/v1/policies/:policy_id/endorsements
       def create
         endorsement = @policy.endorsements.new(endorsement_params)
+        endorsement.effective_date = Date.current
         if endorsement.save
           render json: { data: sorted(endorsement.as_json) }, status: :created
         else
@@ -53,7 +54,7 @@ module Api
 
       def endorsement_params
         params.require(:endorsement).permit(
-          :endorsement_type, :effective_date, :premium, :description
+          :endorsement_type, :effective_date, :premium, :description, :policy_id
         )
       end
     end

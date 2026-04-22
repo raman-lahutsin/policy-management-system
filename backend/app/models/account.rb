@@ -4,7 +4,7 @@ class Account < ApplicationRecord
   has_many :policies, dependent: :restrict_with_error
 
   validates :first_name, :last_name, :email, presence: true
-  validates :email, uniqueness: { case_sensitive: false },
+  validates :email, uniqueness: true,
                     format: { with: URI::MailTo::EMAIL_REGEXP }
 
   normalizes :email, with: ->(email) { email.strip.downcase }
